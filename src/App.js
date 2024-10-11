@@ -1,15 +1,15 @@
+import React, { useState } from "react";
+import { Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./styles/styles.scss";
 
-import { Container, Row } from "react-bootstrap";
-import { useState } from "react";
 import Header from "./components/Header";
 import CarouselItem from "./components/Carousel";
 import CardList from "./components/CardList";
 import CartModal from "./components/CartModal"; // Renamed ModalItem to CartModal
 
-function App() {
+const App = () => {
   const [showCart, setShowCart] = useState(false); // Cart modal state
   const [cart, setCart] = useState([]); // Cart state
   const [count, setCount] = useState(0); // Cart item count
@@ -25,11 +25,11 @@ function App() {
   // Function to add an item to the cart
   const handleAddToCart = (item, quantity) => {
     // Check if the item is already in the cart
-    const existingItem = cart.find(cartItem => cartItem.title === item.title);
+    const existingItem = cart.find((cartItem) => cartItem.title === item.title);
 
     if (existingItem) {
       // Update quantity for existing item
-      const updatedCart = cart.map(cartItem =>
+      const updatedCart = cart.map((cartItem) =>
         cartItem.title === item.title
           ? { ...cartItem, quantity: cartItem.quantity + quantity }
           : cartItem
@@ -42,7 +42,7 @@ function App() {
     }
 
     // Update total item count in the cart
-    setCount(prevCount => prevCount + quantity);
+    setCount((prevCount) => prevCount + quantity);
   };
 
   // Function to update the quantity of a cart item
@@ -70,18 +70,21 @@ function App() {
 
       {/* Display CardList and pass handleAddToCart to handle purchases */}
       <Row className="justify-content-center">
-        <CardList handleAddToCart={handleAddToCart} />
+        <CardList
+          apiUrl="https://api-demo-4gqb.onrender.com/products&#39"
+          handleAddToCart={handleAddToCart}
+        />
       </Row>
 
       {/* CartModal to show cart data */}
       <CartModal
         show={showCart}
         handleClose={handleCloseCart}
-        cart={cart}  // Pass the cart for display
+        cart={cart} // Pass the cart for display
         updateCart={updateCart} // Pass updateCart function to CartModal
       />
     </Container>
   );
-}
+};
 
 export default App;

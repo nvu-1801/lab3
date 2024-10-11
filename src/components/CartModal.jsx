@@ -8,7 +8,7 @@ const CartModal = ({ show, handleClose, cart, updateCart }) => {
   const totalCartPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
-  ).toFixed(2);
+  ).toFixed(3);
 
   // Handle the change in quantity
   const handleQuantityChange = (index, e) => {
@@ -51,7 +51,7 @@ const CartModal = ({ show, handleClose, cart, updateCart }) => {
                   </div>
                 </div>
                 <div className="cart-item-total">
-                  ${(item.quantity * item.price).toFixed(2)}
+                  ${(item.quantity * item.price).toFixed(3)}
                 </div>
               </li>
             ))}
