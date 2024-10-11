@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Card, Col, Button, Row } from "react-bootstrap";
 import data from "./data";
 
@@ -7,7 +8,7 @@ const CardItem = ({
   image,
   title,
   price,
-  originalPrice,
+  salePrice,
   badge,
   handleAddToCart,
 }) => (
@@ -30,10 +31,10 @@ const CardItem = ({
 
           {/* Price Section */}
           <div className="price-section">
-            {originalPrice ? (
+            {salePrice ? (
               <>
                 <span className="text-muted text-decoration-line-through">
-                  ${originalPrice}
+                  ${salePrice}
                 </span>
                 &nbsp;
                 <span className="text-success">${price}</span>
@@ -58,20 +59,34 @@ const CardItem = ({
 );
 
 // CardList component
-const CardList = ({ handleAddToCart }) => (
-  <Row className="justify-content-center mt-4">
-    {data.map((item) => (
-      <CardItem
-        key={item.id}
-        image={item.image}
-        title={item.title}
-        price={item.price}
-        originalPrice={item.originalPrice}
-        badge={item.badge}
-        handleAddToCart={handleAddToCart}
-      />
-    ))}
-  </Row>
-);
+const CardList = ({ handleAddToCart }) => {
+  const [products, setProducts] = useState(data);
+
+  const loadData = async () => {
+    const res = await fetch("https://api-demo-4gqb.onrender.com/products");
+    const data = await res.json();
+    console.log(data);
+    setProducts(data.data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+  return (
+    <Row className="justify-content-center mt-4">
+      {products?.map((item) => (
+        <CardItem
+          key={item.id}
+          image={item.image}
+          title={item.title}
+          price={item.price}
+          salePrice={item.salelPrice}
+          badge={item.badge}
+          handleAddToCart={handleAddToCart}
+        />
+      ))}
+    </Row>
+  );
+};
 
 export default CardList;

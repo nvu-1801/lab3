@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Row,
   Button,
@@ -8,8 +9,15 @@ import {
   NavDropdown,
   Badge,
 } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import LoginModal from "./LoginModal"; // Đảm bảo đường dẫn chính xác
 
 const Header = ({ handleShow, count }) => {
+  const [showLogin, setShowLogin] = useState(false);
+  const handleLoginShow = () => setShowLogin(true);
+  const handleLoginClose = () => setShowLogin(false);
+
   return (
     <Row>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -28,7 +36,9 @@ const Header = ({ handleShow, count }) => {
                 <NavDropdown.Item href="#action1">Action 1</NavDropdown.Item>
                 <NavDropdown.Item href="#action2">Action 2</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action3">Something else here</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">
+                  Something else here
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#" disabled>
                 Disabled Link
@@ -47,9 +57,15 @@ const Header = ({ handleShow, count }) => {
               Cart <Badge bg="secondary">{count}</Badge>
               <span className="visually-hidden">items in cart</span>
             </Button>
+            <Button className="ms-2" variant="outline-primary" onClick={handleLoginShow}>
+              <FontAwesomeIcon icon={faUser} /> Đăng Nhập
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {/* Modal Đăng Nhập */}
+      <LoginModal show={showLogin} handleClose={handleLoginClose} />
     </Row>
   );
 };
