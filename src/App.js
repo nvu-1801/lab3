@@ -3,7 +3,6 @@ import { Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./styles/styles.scss";
-
 import Header from "./components/Header";
 import CarouselItem from "./components/Carousel";
 import CardList from "./components/CardList";
@@ -61,17 +60,21 @@ const App = () => {
   };
 
   return (
-    <Container>
+    <Container fluid className="app-container ">
       {/* Pass handleShowCartModal and count to Header for cart display */}
       <Header handleShow={handleShowCartModal} count={count} />
-      
+
       {/* Carousel Section */}
-      <CarouselItem />
+      <div className="carousel-section ">
+        <CarouselItem />
+      </div>
 
       {/* Display CardList and pass handleAddToCart to handle purchases */}
-      <Row className="justify-content-center">
+      <Row className="justify-content-center card-list-section">
+        {/* Tiêu đề "Our Menu" */}
+        <h2 className="menu-title text-center mt-5 mb-4">Our Menu</h2>
         <CardList
-          apiUrl="https://api-demo-4gqb.onrender.com/products&#39"
+          apiUrl="https://api-demo-4gqb.onrender.com/products"
           handleAddToCart={handleAddToCart}
         />
       </Row>
