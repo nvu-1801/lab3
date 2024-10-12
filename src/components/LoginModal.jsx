@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { PersonFill, LockFill } from 'react-bootstrap-icons';
 
 const LoginModal = ({ show, handleClose }) => {
   const [username, setUsername] = useState("");
@@ -57,7 +56,7 @@ const LoginModal = ({ show, handleClose }) => {
             controlId="formBasicEmail"
           >
             <Form.Label className="me-2">
-              <FontAwesomeIcon icon={faUser} />
+              <PersonFill />
             </Form.Label>
             <Form.Control
               type="text"
@@ -73,7 +72,7 @@ const LoginModal = ({ show, handleClose }) => {
             controlId="formBasicPassword"
           >
             <Form.Label className="me-2">
-              <FontAwesomeIcon icon={faLock} />
+              <LockFill />
             </Form.Label>
             <Form.Control
               type="password"
