@@ -9,7 +9,7 @@ import "../styles/styles.scss"; // Đảm bảo file SCSS được nhập đúng
 const CarouselItem = () => {
   return (
     <Row>
-      <Carousel 
+      <Carousel
         interval={3000}    // Thời gian giữa các slide (3 giây)
         slide={true}       // Kích hoạt hiệu ứng slide
         fade={false}       // Tắt hiệu ứng fade để sử dụng slide mượt hơn
@@ -34,27 +34,21 @@ const CarouselItem = () => {
           <img src={pizza3} alt="Third slide" className="d-block w-100 carousel-image" />
           <Carousel.Caption>
             <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src={pizza4} alt="Fourth slide" className="d-block w-100 carousel-image" />
           <Carousel.Caption>
             <h3>Fourth slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src={pizza5} alt="Fifth slide" className="d-block w-100 carousel-image" />
           <Carousel.Caption>
             <h3>Fifth slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

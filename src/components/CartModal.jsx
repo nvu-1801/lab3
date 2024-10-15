@@ -23,7 +23,7 @@ const CartModal = ({ show, handleClose, cart, updateCart }) => {
   // Handle checkout process
   const handleCheckout = () => {
     // Display success toast notification
-    toast.success("Thanh toán thành công!");
+    // toast.success("Thanh toán thành công!");
     handleClose(); // Close the modal after successful checkout
   };
 
@@ -81,7 +81,7 @@ const CartModal = ({ show, handleClose, cart, updateCart }) => {
       </Modal>
 
       {/* Toast Container to display toasts */}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </>
   );
 };

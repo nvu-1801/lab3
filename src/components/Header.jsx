@@ -12,19 +12,22 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import LoginModal from "./LoginModal";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({ handleShow, count }) => {
   const [showLogin, setShowLogin] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false); // Trạng thái đăng nhập
+  const [menuOpen, setMenuOpen] = useState(false); // Trạng thái mở/đóng menu
 
   const handleLoginShow = () => setShowLogin(true);
   const handleLoginClose = () => setShowLogin(false);
 
   const handleLogout = () => {
     setLoggedIn(false);
-    toast.success("Đã đăng xuất!");
+  };
+
+  const handleLoginSuccess = () => {
+    setLoggedIn(true);
+    setShowLogin(false);
   };
 
   return (
@@ -33,6 +36,7 @@ const Header = ({ handleShow, count }) => {
         <Navbar bg="light" expand="lg" className="bg-body-tertiary">
           <Container fluid>
             <Navbar.Brand href="#">Pizza House</Navbar.Brand>
+            {/* Đảm bảo rằng aria-controls khớp với ID của Navbar.Collapse */}
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -82,10 +86,7 @@ const Header = ({ handleShow, count }) => {
       </Row>
 
       {/* Modal Đăng Nhập */}
-      <LoginModal show={showLogin} handleClose={handleLoginClose} setLoggedIn={setLoggedIn} />
-
-      {/* Toast Container để hiển thị thông báo */}
-      <ToastContainer />
+      <LoginModal show={showLogin} handleClose={handleLoginClose} setLoggedIn={handleLoginSuccess} />
     </>
   );
 };

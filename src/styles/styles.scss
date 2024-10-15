@@ -8,6 +8,10 @@ body {
   padding: 20px;
 }
 
+.carousel-image{
+  transition: transform 1s ease-in-out;
+}
+
 // Carousel section
 .carousel-section {
   transition: transform 0.8s ease-in-out;
